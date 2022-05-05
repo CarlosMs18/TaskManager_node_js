@@ -61,7 +61,29 @@ const pause = async() => {
     await inquirer.prompt(questionPause)
 }
 
+
+const createTarea = async() => {
+    const question = [
+        {
+            type : 'input',
+            name : 'description',
+            message : '¿Que tarea desea crear?',
+            validate(value){
+                if(!value){
+                    throw 'La descripcion no puede ir vacia'
+                }
+                return true
+            }
+
+        }
+    ]
+
+    const {description} = await inquirer.prompt(question)
+    return description
+}
+
 module.exports = {
     menuInquire,
-    pause
+    pause,
+    createTarea
 }

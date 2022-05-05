@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/CarlosMs18/TaskManager_node_js#readme",
   "dependencies": {
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "uuid": "^8.3.2"
   }
 }

@@ -1,4 +1,6 @@
-const {menuInquire, pause} = require('./helpers/inquire-menu')
+const Tarea = require('./classes/tarea');
+const tareas = require('./classes/tareas');
+const {menuInquire, pause, createTarea} = require('./helpers/inquire-menu')
 
 const main = async() => {
     
@@ -9,7 +11,10 @@ const main = async() => {
 
         switch (opcion) {
             case '1':
-                console.log('option 1')
+                const descripcion = await createTarea()
+            
+                const tarea = new Tarea(descripcion)
+                tareas.agregarTarea(tarea)
                 break;
         
             default:
