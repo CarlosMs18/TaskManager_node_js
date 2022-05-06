@@ -26,6 +26,37 @@ class Tareas{
             console.log(`${idx}. ${descripcion} ${completado} :: ${estado}`)
         })
     }
+
+
+
+    mostrarCompletadasPendiente(completadas){
+        let contador = 0;
+        let estado;
+        this.lista.forEach(tarea => {
+            const {descripcion , completado} = tarea
+
+            if(completado){
+                estado = 'Completadas'
+            }else{
+                estado = 'Incompleto'
+            }
+
+            if(completadas){
+                if(completado){
+                   contador++
+                   console.log(`${contador}. ${descripcion} ${completado} :: ${estado} `)
+                }
+            }else{
+                if(!completado){
+                    
+                    contador++
+                    console.log(`${contador}. ${descripcion} ${completado} :: ${estado} `)
+                }
+            }
+
+        })
+    
+    }
 }
 
 

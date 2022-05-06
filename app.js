@@ -28,10 +28,12 @@ const main = async() => {
                 break;
             
             case '3':
-                console.log('tareas completadas')
+                tareas.mostrarCompletadasPendiente(true)
+           
                 break;
             case '4':
-                console.log('tarea pendiente')
+                tareas.mostrarCompletadasPendiente(false)
+              
                 break;
             default:
                 
