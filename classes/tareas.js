@@ -48,7 +48,6 @@ class Tareas{
                 }
             }else{
                 if(!completado){
-                    
                     contador++
                     console.log(`${contador}. ${descripcion} ${completado} :: ${estado} `)
                 }
@@ -56,6 +55,24 @@ class Tareas{
 
         })
     
+    }
+
+    completarChecked(id){
+     this.lista.forEach(tarea => {
+            if(!id.includes(tarea.id)){
+                tarea.completado = null
+            }else{
+                tarea.completado = new Date().toDateString()
+            }
+        })
+     
+     
+    }
+
+
+    async eliminarTarea(id){
+        this.lista = this.lista.filter(p => p.id !== id)
+
     }
 }
 

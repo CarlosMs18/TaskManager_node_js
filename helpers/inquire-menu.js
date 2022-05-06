@@ -82,8 +82,84 @@ const createTarea = async() => {
     return description
 }
 
+const menuEliminar = async(tareas)=>{
+    
+   
+    const choices = tareas.map((tarea, i)=> {
+        const idx = `${i+1}`
+        return {
+            value : tarea.id,
+            name : `${idx}. ${tarea.descripcion}`
+        }
+    })
+
+    choices.unshift({
+        value:'0',
+        name:'0. Salir'
+    })
+
+
+    const question = [
+        {
+            type :'list',
+            name : 'id',
+            message : '¿Que tarea desea eliminar?',
+            choices
+
+        }
+    ]
+
+    const {id} = await inquirer.prompt(question)
+    return id
+}
+
+
+const confirmar = async() =>{
+   
+    const pregunta = [
+        {
+            type:'confirm',
+            name : 'ok',
+            message : 'Esta seguro de eliminar la tarea?'
+        }
+    ]
+
+
+    const {ok} = await inquirer.prompt(pregunta)
+    return ok
+}
+
+
+
+const mostrarListadoCheck = async(tareas) => {
+    const choices = tareas.map((tarea, i)=> {
+        const idx = `${i+1}`
+        return {
+            value : tarea.id,
+            name : `${idx}. ${tarea.descripcion}`,
+            checked : (tarea.completado) ? true : false
+        }
+    })
+
+    const preguntas = [
+        {
+            type : 'checkbox',
+            name : 'id',
+            message : 'Marcar (completado/pendiente)',
+            choices 
+
+        }
+    ]
+    const {id} =  await inquirer.prompt(preguntas)
+
+    return id
+}
+
 module.exports = {
     menuInquire,
     pause,
-    createTarea
+    createTarea,
+    menuEliminar,
+    confirmar,
+    mostrarListadoCheck
 }

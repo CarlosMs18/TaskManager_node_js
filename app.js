@@ -1,6 +1,6 @@
 const Tarea = require('./classes/tarea');
 const tareas = require('./classes/tareas');
-const {menuInquire, pause, createTarea} = require('./helpers/inquire-menu')
+const {menuInquire, pause, createTarea, menuEliminar, confirmar, mostrarListadoCheck} = require('./helpers/inquire-menu')
 const {guardarDB, leerDB} = require('./helpers/save_db')
 
 const main = async() => {
@@ -34,6 +34,27 @@ const main = async() => {
             case '4':
                 tareas.mostrarCompletadasPendiente(false)
               
+                break;
+            case '5':
+                const idTarea = await mostrarListadoCheck(tareas.lista)
+                tareas.completarChecked(idTarea)
+                break;
+
+            case '6':
+                const id = await menuEliminar(tareas.lista)
+                if(id !=='0'){
+                    const ok = await confirmar()
+                   
+                    if(ok){
+                       
+                        await tareas.eliminarTarea(id)
+                        
+                    }else{
+                        break;
+                    }
+                    
+                }
+        
                 break;
             default:
                 
