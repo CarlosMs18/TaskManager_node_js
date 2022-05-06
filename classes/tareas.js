@@ -11,6 +11,21 @@ class Tareas{
         this.lista = [...this.lista, tarea]
         console.log(this.lista)
     }
+
+    mostrarTareas(){
+        let estado;
+        this.lista.forEach((tarea, i)=>{
+            const idx = `${i+1}`
+            const {descripcion, completado} = tarea
+            if(completado){
+                estado = 'Completado'
+            }else{
+                estado = 'Pendiente'
+            }
+
+            console.log(`${idx}. ${descripcion} ${completado} :: ${estado}`)
+        })
+    }
 }
 
 

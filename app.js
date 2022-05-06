@@ -24,7 +24,14 @@ const main = async() => {
                 tareas.agregarTarea(tarea)
                 break;
             case '2':
-                console.log(tareas.lista)
+                tareas.mostrarTareas()
+                break;
+            
+            case '3':
+                console.log('tareas completadas')
+                break;
+            case '4':
+                console.log('tarea pendiente')
                 break;
             default:
                 
